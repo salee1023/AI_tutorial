@@ -6,7 +6,7 @@ import random
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
-# Req. 5-1 Fashion MNIST 데이터 다운 및 시각화
+# Fashion MNIST 데이터 다운 및 시각화
 # 데이터 다운
 fashion_data = keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = fashion_data.load_data()
@@ -20,7 +20,7 @@ plt.show()
 train_images = train_images / 255.0
 test_images = test_images / 255.0
 
-# Req. 5-2 인공신경망 구현 및 컴파일
+# 인공신경망 구현 및 컴파일
 # 모델 구현
 # [28, 28] -> [28 * 28] -> [128] -> [10]
 
@@ -31,9 +31,10 @@ model.add(keras.layers.Dense(10, activation='softmax'))  # result
 
 model.summary()
 
-model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['acc'])
+model.compile(loss='sparse_categorical_crossentropy',
+              optimizer='adam', metrics=['acc'])
 
-# Req. 5-3 모델 학습 및 테스트
+# 모델 학습 및 테스트
 epoch = 20
 batch_size = 16
 
@@ -44,7 +45,7 @@ model.fit(train_images, train_labels, epochs=epoch,
 # 테스트(예측)
 predict_labels = model.predict(test_images)
 
-# Req. 5-4 테스트 결과 시각화
+# 테스트 결과 시각화
 # 랜덤으로 데이터 10개 선택
 test_list = list(range(0, len(test_images)))
 random_image = []
@@ -74,9 +75,9 @@ def plot_image(i, predictions_array, true_label, img):
         color = 'red'
 
     plt.xlabel("{} {:2.0f}% ({})".format(class_names[predicted_label],
-                                    100*np.max(predictions_array),
-                                    class_names[true_label]),
-                                    color=color)
+                                         100*np.max(predictions_array),
+                                         class_names[true_label]),
+               color=color)
 
 
 def plot_value_array(i, predictions_array, true_label):
