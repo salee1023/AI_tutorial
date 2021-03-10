@@ -57,7 +57,7 @@ plt.show()
 model.summary()
 ```
 
-
+<br/>
 
 ### 02. 데이터 전처리 및 시각화 
 
